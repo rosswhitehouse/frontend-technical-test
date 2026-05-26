@@ -1,6 +1,7 @@
 import React from 'react';
 import useData from './useData';
 import './style.scss';
+import Vehicle from './Vehicle';
 
 export default function VehicleList() {
   // eslint-disable-next-line no-unused-vars
@@ -35,6 +36,14 @@ export default function VehicleList() {
         {' '}
         (vehicle without any price)
       </p>
+
+      <h1>See our full range</h1>
+      <ul className="vehicles__list">
+        {vehicles && vehicles instanceof Array && vehicles.map((vehicle) => {
+          if (vehicle.apiUrl) return <Vehicle key={vehicle.id} vehicle={vehicle} />;
+          return null;
+        })}
+      </ul>
     </div>
   );
 }

@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import getData from '../../api';
 
-export default function useData() {
+export default function useData(id = '') {
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    getData()
+    getData(id)
       .then((response) => setVehicles(response))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
