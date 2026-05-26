@@ -16,7 +16,7 @@ export default function Vehicle({ vehicle }) {
     };
 
     getVehicleData();
-  }, [vehicle?.id]);
+  }, [vehicle && vehicle.id]);
 
   if (!vehicleInfo.id || !vehicleInfo.price) return null;
 
@@ -27,8 +27,8 @@ export default function Vehicle({ vehicle }) {
     media
   } = vehicleInfo;
 
-  const squareImg = media?.find((img) => img.url.includes('1x1'));
-  const videoImg = media?.find((img) => img.url.includes('16x9'));
+  const squareImg = media && media.find((img) => img.url.includes('1x1'));
+  const videoImg = media && media.find((img) => img.url.includes('16x9'));
 
   return (
     <li className="vehicles__single" data-testid="vehicle">
